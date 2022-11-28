@@ -15,7 +15,6 @@ import INR
 import utils
 import clip
 import torch.nn.functional as F
-from template import imagenet_templates
 
 from PIL import Image 
 import PIL 
@@ -136,9 +135,6 @@ def get_image_prior_losses(inputs_jit):
     loss_var_l2 = torch.norm(diff1) + torch.norm(diff2) + torch.norm(diff3) + torch.norm(diff4)
     
     return loss_var_l2
-
-def compose_text_with_templates(text: str, templates=imagenet_templates) -> list:
-    return [template.format(text) for template in templates]
 
 content_path = args.content_path
 content_image = utils.load_image2(content_path, img_height=args.img_height,img_width=args.img_width)
